@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import Tabar from './components/Toast/Tabar/Tabar';
 
-function App() {
+
+
+//所有登入后的页面都要在该页面中访问
+export default function App() {
+  const data = useSelector((state:Idata)=>{
+    return state;
+  })
+  
+  //导航栏
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      
+      <Outlet></Outlet>
+      <div style={{height:'50px',width:'100%'}}></div>
+
+      <Tabar></Tabar>
     </div>
-  );
+  )
 }
 
-export default App;
+
